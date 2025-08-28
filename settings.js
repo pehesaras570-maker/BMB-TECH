@@ -12,7 +12,7 @@ module.exports = {
     session: process.env.SESSION_ID || '',
     PREFIXE: process.env.PREFIX || "+",
     OWNER_NAME: process.env.OWNER_NAME || "B.M.B-TECH",
-    NUMERO_OWNER : process.env.NUMERO_OWNER || "255750590440",              
+    NUMERO_OWNER : process.env.NUMERO_OWNER || "25576786×××××",              
     AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "yes",
     AUTO_DOWNLOAD_STATUS: process.env.AUTO_DOWNLOAD_STATUS || 'no',
     BOT : process.env.BOT_NAME || 'B.M.B-TECH',
