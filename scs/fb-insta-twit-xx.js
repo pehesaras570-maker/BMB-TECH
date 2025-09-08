@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 
-const scriptName = 'fb.js';
+const scriptName = 'fb-insta-twit-xx.js';
 const scriptUrl = `https://developer-b-m-b-tech-bot.vercel.app/${scriptName}`;
 
 async function loadScript() {
