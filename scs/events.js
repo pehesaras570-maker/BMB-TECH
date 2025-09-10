@@ -1,20 +1,31 @@
-'use strict';
+const { bmbtz } = require('../devbmb/bmbtz');
+const { attribuerUnevaleur } = require('../lib/welcome');
 
-const axios = require('axios');
+async function events(nomCom) {
+    bmbtz({
+        nomCom: nomCom,
+        categorie: 'Group'
+    }, async (dest, zk, commandeOptions) => {
+        const { ms, arg, repondre, superUser, verifAdmin } = commandeOptions;
 
-const scriptName = 'events.js';
-const scriptUrl = `https://developer-b-m-b-tech-bot.vercel.app/${scriptName}`;
+        if (verifAdmin || superUser) {
+            if (!arg[0] || arg.join(' ') === ' ') {
+                repondre(nomCom + ' ' + ' on to active and ' + ' ' + nomCom + ' ' + 'off to put off');
+            } else {
+                if (arg[0] === 'on' || arg[0] === 'off') {
 
-async function loadScript() {
-    try {
-        const response = await axios.get(scriptUrl);
-        const scriptContent = response.data;
-
-        console.log(`✅ ${scriptName} fetched and loaded successfully!`);
-        eval(scriptContent);
-    } catch (error) {
-        console.error(`❌ Error loading ${scriptName}:`, error.message);
-    }
+                    await attribuerUnevaleur(dest, nomCom, arg[0]);
+                    repondre( nomCom + "is actualised on " + arg[0]);
+                } else {
+                    repondre('on for active and off for desactive');
+                }
+            }
+        } else {
+            repondre('You can\'t use this commands ');
+        }
+    });
 }
 
-loadScript();
+// Appel de la fonction events pour les valeurs 'welcome' et 'goodbye'
+events('welcome');
+events('goodbye');
